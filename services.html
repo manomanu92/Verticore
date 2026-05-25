@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Services | Verticore Engineering Pvt Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+<header>
+  <nav>
+    <div class="logo">
+      <img src="./logo.jpeg" alt="Verticore Engineering logo" class="logo-img"/>
+      <div class="logo-text">
+        <div class="logo-main">VERTI<span>CORE</span></div>
+        <div class="logo-sub">Engineering Pvt Ltd</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Get a Quote</a>
+  </nav>
+</header>
+
+<section class="services-section">
+  <div class="sec-head reveal">
+    <div class="sec-tag">What We Offer</div>
+    <h2>Products &amp; <em>Services</em></h2>
+  </div>
+  <div class="cards">
+    <div class="card reveal">
+      <div class="card-num">01</div>
+      <div class="card-icon">🏢</div>
+      <h3>Passenger Elevators</h3>
+      <p>Modern, whisper-quiet passenger lift systems designed for residential towers, hotels, hospitals, and commercial high-rises.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-num">02</div>
+      <div class="card-icon">🏗️</div>
+      <h3>Goods Elevators</h3>
+      <p>Heavy-duty freight platforms engineered for warehouses, factories, and industrial complexes with reinforced load capacity.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-num">03</div>
+      <div class="card-icon">🔩</div>
+      <h3>Elevator Components</h3>
+      <p>Cabins, doors, control panels, guide rails, and safety systems — precision-made and globally sourced.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-num">04</div>
+      <div class="card-icon">🛠️</div>
+      <h3>Maintenance &amp; Support</h3>
+      <p>Installation, modernisation, and long-term service contracts to keep your vertical transport performing at peak.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">VERTI<span>CORE</span> Engineering Pvt Ltd</div>
+  <div class="foot-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="foot-copy">© 2026 Verticore Engineering Pvt Ltd. All rights reserved.</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
