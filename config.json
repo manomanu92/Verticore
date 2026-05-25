@@ -1,0 +1,52 @@
+{
+  "site": {
+    "name": "Verticore Engineering Pvt Ltd",
+    "title": "Verticore Engineering - Elevator Manufacturing & Solutions",
+    "description": "We design and manufacture high-quality elevators and components built for safety, performance, and lasting reliability.",
+    "url": "https://verticore.com",
+    "year_founded": 1999
+  },
+  "contact": {
+    "phone": "+91 9900498706",
+    "email": "contact@verticore.co.in",
+    "address": "UAE / India Operations",
+    "hours": "Mon – Sat: 9:00 AM – 6:30 PM"
+  },
+  "social": {
+    "linkedin": "https://linkedin.com/company/verticore-engineering",
+    "twitter": "https://twitter.com/verticoreeng",
+    "facebook": "https://facebook.com/verticoreengineering"
+  },
+  "stats": {
+    "experience_years": 25,
+    "installations": 3200,
+    "countries_served": 40,
+    "uptime_rate": "99.7%"
+  },
+  "services": [
+    {
+      "id": 1,
+      "name": "Passenger Elevators",
+      "icon": "🏢",
+      "description": "Modern, whisper-quiet passenger lift systems designed for residential towers, hotels, hospitals, and commercial high-rises."
+    },
+    {
+      "id": 2,
+      "name": "Goods Elevators",
+      "icon": "🏗️",
+      "description": "Heavy-duty freight platforms engineered for warehouses, factories, and industrial complexes with reinforced load capacity."
+    },
+    {
+      "id": 3,
+      "name": "Elevator Components",
+      "icon": "🔩",
+      "description": "Cabins, doors, control panels, guide rails, and safety systems — precision-made and globally sourced."
+    },
+    {
+      "id": 4,
+      "name": "Maintenance & Support",
+      "icon": "🛠️",
+      "description": "Installation, modernisation, and long-term service contracts to keep your vertical transport performing at peak."
+    }
+  ]
+}

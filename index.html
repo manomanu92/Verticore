@@ -213,6 +213,16 @@ nav{display:flex;align-items:center;justify-content:space-between;height:78px;}
 .submit-row{margin-top:8px;display:flex;align-items:center;gap:20px;}
 .success{font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:1px;color:var(--gold);display:none;}
 
+/* ── MAP ── */
+.map-section{
+  width:100%;height:500px;background:var(--offwhite);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.map-section iframe{
+  width:100%;height:100%;border:none;
+}
+
 /* ── FOOTER ── */
 footer{
   background:var(--navy);
@@ -238,7 +248,7 @@ footer{
 <header>
   <nav>
     <div class="logo">
-      <img src="logo.jpeg" alt="Verticore Engineering logo" class="logo-img"/>
+      <img src="./logo.jpeg" alt="Verticore Engineering logo" class="logo-img"/>
     <div class="logo-text">
       <div class="logo-main">VERTI<span>CORE</span></div>
       <div class="logo-sub">Engineering Pvt Ltd</div>
@@ -377,7 +387,7 @@ footer{
       <div class="info-items">
         <div class="info-item">
           <div class="info-dot">📍</div>
-          <div class="info-body"><div class="lbl">Address</div><div class="val">UAE / India Operations</div></div>
+          <div class="info-body"><div class="lbl">Address</div><div class="val">India Operations</div></div>
         </div>
         <div class="info-item">
           <div class="info-dot">📞</div>
@@ -395,23 +405,30 @@ footer{
     </div>
     <div class="form-wrap reveal">
       <h3>Request a Quote</h3>
-      <div class="form-row">
-        <div class="fg"><label>Full Name</label><input type="text" placeholder="Your name"/></div>
-        <div class="fg"><label>Phone</label><input type="tel" placeholder="+971 50 000 0000"/></div>
-      </div>
-      <div class="fg full"><label>Email</label><input type="email" placeholder="you@company.com"/></div>
-      <div class="fg full"><label>Company</label><input type="text" placeholder="Your company name"/></div>
-      <div class="fg full">
-        <label>Product Interest</label>
-        <select><option value="" disabled selected>Select a product</option><option>Passenger Elevators</option><option>Goods / Freight Elevators</option><option>Elevator Components</option><option>Maintenance & Support</option></select>
-      </div>
-      <div class="fg full"><label>Message</label><textarea placeholder="Tell us about your project — building type, floors, requirements..."></textarea></div>
-      <div class="submit-row">
-        <button class="btn-gold" onclick="handleSub()">Send Enquiry</button>
-        <span class="success" id="succ">✓ Sent! We'll be in touch shortly.</span>
-      </div>
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="fg"><label>Full Name</label><input type="text" name="user_name" placeholder="Your name" required/></div>
+          <div class="fg"><label>Phone</label><input type="tel" name="user_phone" placeholder="+91 9900498706" required/></div>
+        </div>
+        <div class="fg full"><label>Email</label><input type="email" name="user_email" placeholder="you@company.com" required/></div>
+        <div class="fg full"><label>Company</label><input type="text" name="company_name" placeholder="Your company name" required/></div>
+        <div class="fg full">
+          <label>Product Interest</label>
+          <select name="product_interest" required><option value="" disabled selected>Select a product</option><option>Passenger Elevators</option><option>Goods / Freight Elevators</option><option>Elevator Components</option><option>Maintenance & Support</option></select>
+        </div>
+        <div class="fg full"><label>Message</label><textarea name="message" placeholder="Tell us about your project — building type, floors, requirements..." required></textarea></div>
+        <div class="submit-row">
+          <button type="submit" class="btn-gold">Send Enquiry</button>
+          <span class="success" id="succ">✓ Sent! We'll be in touch shortly.</span>
+        </div>
+      </form>
     </div>
   </div>
+</div>
+
+<!-- MAP -->
+<div class="map-section">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.6896868937!2d77.50461000000001!3d12.9715987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1d41d4cf65fb%3A0xf02ff0f6198fcc33!2sBangalore!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 
 <!-- FOOTER -->
@@ -426,18 +443,45 @@ footer{
   <div class="foot-copy">© 2026 Verticore Engineering Pvt Ltd. All rights reserved.</div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js"></script>
 <script>
+// Initialize EmailJS
+emailjs.init({
+  publicKey: 'GsNEhSGgqKRTsQsj6' // Replace with your EmailJS public key
+});
+
 // Scroll reveal
 const obs = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
 },{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Form submit
-function handleSub(){
-  document.getElementById('succ').style.display='inline';
-  setTimeout(()=>document.getElementById('succ').style.display='none',4000);
-}
+// Form submit handler
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = {
+    user_name: document.querySelector('[name="user_name"]').value,
+    user_email: document.querySelector('[name="user_email"]').value,
+    user_phone: document.querySelector('[name="user_phone"]').value,
+    company_name: document.querySelector('[name="company_name"]').value,
+    product_interest: document.querySelector('[name="product_interest"]').value,
+    message: document.querySelector('[name="message"]').value
+  };
+  
+  emailjs.send('service_us0bdfo', 'template_mbkabrf', formData).then(
+    function(response) {
+      console.log('Success!', response.status, response.text);
+      document.getElementById('succ').style.display = 'inline';
+      document.getElementById('contactForm').reset();
+      setTimeout(() => { document.getElementById('succ').style.display = 'none'; }, 4000);
+    },
+    function(error) {
+      console.log('Failed...', error);
+      alert('Error sending form. Please try again.');
+    }
+  );
+});
 </script>
 </body>
 </html>
